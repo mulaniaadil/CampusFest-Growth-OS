@@ -1,0 +1,36 @@
+{
+  "name": "campusfest-growth-os",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "verify": "tsx scripts/verify.ts",
+    "test:analyst": "tsx scripts/analyst-test.ts",
+    "deck:pdf": "node scripts/deck-pdf.mjs",
+    "validate:py": "python ../scripts/validate_workbook.py"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.2",
+    "lucide-react": "^1.81.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "recharts": "^3.11.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "oxlint": "^1.94.0",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "~7.0.2",
+    "vite": "^8.4.0"
+  }
+}

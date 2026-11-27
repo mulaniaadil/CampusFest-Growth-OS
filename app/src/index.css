@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+
+/* Two-colour system: cobalt (primary) + coral (sole accent).
+   Neutrals: white, very light blue-grey, charcoal. */
+@theme {
+  --color-blue: #2457d6;
+  --color-blue-600: #1d47b3;
+  --color-blue-300: #6e92f0;
+  --color-blue-100: #dce5fa;
+  --color-blue-50: #eef2fc;
+  --color-blue-25: #f6f8fe;
+  --color-coral: #f28c6b;
+  --color-coral-ink: #b5482a; /* coral at text-contrast strength */
+  --color-coral-50: #fdf0eb;
+  --color-coral-25: #fef7f4;
+  --color-ink: #1f2430;
+  --color-ink-2: #4b5160;
+  --color-muted: #646b7a;
+  --color-line: #e3e8f0;
+  --color-canvas: #f4f6fb;
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  /* Large-surface gradient: near-white blue at the top settling into a calm blue-grey canvas. */
+  background: linear-gradient(180deg, #eaf0fd 0px, #f1f4fc 260px, var(--color-canvas) 620px) no-repeat, var(--color-canvas);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'tnum' 1, 'cv11' 1;
+}
+
+/* Surface system (kept in the components layer so utilities can still override borders/backgrounds). */
+@layer components {
+  /* Default content panel */
+  .surface {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(23, 37, 84, 0.04), 0 2px 8px -3px rgba(23, 37, 84, 0.07);
+  }
+  /* Secondary / supporting section */
+  .surface-tint { background: linear-gradient(180deg, #f8faff 0%, #f3f6fd 100%); }
+  /* Attention panel: reserved for one or two priority metrics */
+  .surface-attention {
+    background: linear-gradient(135deg, #fdf0eb 0%, #fef7f4 55%, #ffffff 100%);
+    box-shadow: inset 3px 0 0 var(--color-coral), 0 1px 2px rgba(23, 37, 84, 0.04), 0 2px 8px -3px rgba(23, 37, 84, 0.07);
+  }
+  /* Recommended action: same idea in blue */
+  .surface-action {
+    background: linear-gradient(135deg, #eef2fc 0%, #f6f8fe 55%, #ffffff 100%);
+    box-shadow: inset 3px 0 0 var(--color-blue), 0 1px 2px rgba(23, 37, 84, 0.04), 0 2px 8px -3px rgba(23, 37, 84, 0.07);
+  }
+  /* App header band */
+  .header-band { background: linear-gradient(100deg, #ffffff 0%, #f4f7fe 55%, #e9effc 100%); }
+  /* Sidebar tint */
+  .sidebar-tint { background: linear-gradient(180deg, #ffffff 0%, #f7f9fe 60%, #f1f5fd 100%); }
+  .nav-active { background: linear-gradient(90deg, #e6edfc 0%, #f1f5fe 100%); }
+}
+
+.tnum { font-variant-numeric: tabular-nums; }
+.label-caps { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--color-muted); }
+.dotted-b { border-bottom: 1px dotted #c9ced8; }
+input, select, textarea, button { font: inherit; }
+.recharts-cartesian-axis-tick-value { font-size: 11px; fill: #5b6272; }
+.recharts-legend-item-text { color: #4b5160 !important; }
+.recharts-tooltip-wrapper { outline: none; }
+::selection { background: #dce5fa; }
